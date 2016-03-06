@@ -1,33 +1,15 @@
 <?php
+use yii\helpers\ArrayHelper;
 
 Yii::setAlias('@tests', dirname(__DIR__) . '/tests/codeception');
 
-$params = require(__DIR__ . '/params.php');
-$db = require(__DIR__ . '/db.php');
+$params = ArrayHelper::merge(require(__DIR__ . '/params.php'),
+    require(__DIR__ . '/params-local.php'));
 
 $config = [
     'id' => 'basic-console',
-    'basePath' => dirname(__DIR__),
-    'bootstrap' => ['log'],
+    'bootstrap' => ['gii'],
     'controllerNamespace' => 'app\commands',
-    'components' => [
-        'cache' => [
-            'class' => 'yii\caching\FileCache',
-        ],
-        'log' => [
-            'targets' => [
-                [
-                    'class' => 'yii\log\FileTarget',
-                    'levels' => ['error', 'warning'],
-                ],
-            ],
-        ],
-        'db' => $db,
-        'urlManager' => [
-            'enablePrettyUrl' => true,
-            'showScriptName' => false,
-        ],
-    ],
     'params' => $params,
     /*
     'controllerMap' => [
