@@ -5,18 +5,19 @@ $params = ArrayHelper::merge(require(__DIR__ . '/params.php'),
     require(__DIR__ . '/params-local.php'));
 
 $config = [
-    'id' => 'basic',
+    'id' => 'app',
     'components' => [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'lBry5HpyEiVe4IFI1_tfvxcN_C8cfc-5',
         ],
         'user' => [
-            'identityClass' => 'app\models\User',
+            'identityClass' => 'app\modules\user\models\User',
             'enableAutoLogin' => true,
+            'loginUrl' => ['user/default/login'],
         ],
         'errorHandler' => [
-            'errorAction' => 'site/error',
+            'errorAction' => 'main/default/error',
         ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,

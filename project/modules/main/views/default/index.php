@@ -1,5 +1,5 @@
 <?php
-
+namespace app\main;
 /* @var $this yii\web\View */
 
 $this->title = 'My Yii Application';
