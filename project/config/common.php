@@ -6,6 +6,8 @@ $params = ArrayHelper::merge(require(__DIR__ . '/params.php'),
     require(__DIR__ . '/params-local.php'));
 
 return [
+    'language' => 'ru',
+    'name' => 'Matt',
 	'basePath' => dirname(__DIR__),
 	'bootstrap' => ['log'],
 	'modules' => [
@@ -17,6 +19,14 @@ return [
         ],
     ],
 	'components' => [
+        'i18n' => [
+            'translations' => [
+                'app' => [
+                    'class' => 'yii\i18n\PhpMessageSource',
+                    'forceTranslation' => true,
+                ],
+            ],
+        ],
 		'db' => [
 			'class' => 'yii\db\Connection',
 			'charset' => 'utf8',

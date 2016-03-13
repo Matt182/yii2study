@@ -96,7 +96,7 @@ class DefaultController extends Controller
     public function actionEmailConfirm($token)
     {
         try {
-            $model->confirmEmail($token);
+            $model = new EmailConfirmForm($token);
         } catch (InvalidParamException $e) {
             throw new BadRequestHttpException($e->getMessage());
         }
